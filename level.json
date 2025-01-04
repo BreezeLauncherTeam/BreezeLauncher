@@ -1,0 +1,297 @@
+
+{
+    "": {
+        "Data": {
+            "WanderingTraderSpawnChance": 25,
+            "BorderCenterZ": 0,
+            "Difficulty": 2,
+            "BorderSizeLerpTime": [
+                0,
+                0
+            ],
+            "raining": 0,
+            "Time": [
+                0,
+                664
+            ],
+            "GameType": 1,
+            "ServerBrands": [
+                "vanilla"
+            ],
+            "BorderCenterX": 0,
+            "BorderDamagePerBlock": 0.2,
+            "BorderWarningBlocks": 5,
+            "WorldGenSettings": {
+                "bonus_chest": 0,
+                "seed": [
+                    -73642453,
+                    1554113544
+                ],
+                "generate_features": 1,
+                "dimensions": {
+                    "minecraft:overworld": {
+                        "generator": {
+                            "settings": "minecraft:overworld",
+                            "biome_source": {
+                                "preset": "minecraft:overworld",
+                                "type": "minecraft:multi_noise"
+                            },
+                            "type": "minecraft:noise"
+                        },
+                        "type": "minecraft:overworld"
+                    },
+                    "minecraft:the_nether": {
+                        "generator": {
+                            "settings": "minecraft:nether",
+                            "biome_source": {
+                                "preset": "minecraft:nether",
+                                "type": "minecraft:multi_noise"
+                            },
+                            "type": "minecraft:noise"
+                        },
+                        "type": "minecraft:the_nether"
+                    },
+                    "minecraft:the_end": {
+                        "generator": {
+                            "settings": "minecraft:end",
+                            "biome_source": {
+                                "type": "minecraft:the_end"
+                            },
+                            "type": "minecraft:noise"
+                        },
+                        "type": "minecraft:the_end"
+                    }
+                }
+            },
+            "DragonFight": {
+                "NeedsStateScanning": 1,
+                "Gateways": [
+                    11,
+                    16,
+                    10,
+                    15,
+                    1,
+                    3,
+                    5,
+                    18,
+                    17,
+                    9,
+                    6,
+                    4,
+                    0,
+                    7,
+                    12,
+                    13,
+                    19,
+                    2,
+                    8,
+                    14
+                ],
+                "DragonKilled": 0,
+                "PreviouslyKilled": 0
+            },
+            "BorderSizeLerpTarget": 59999968,
+            "Version": {
+                "Snapshot": 0,
+                "Series": "main",
+                "Id": 4189,
+                "Name": "1.21.4"
+            },
+            "DayTime": [
+                0,
+                664
+            ],
+            "initialized": 1,
+            "WasModded": 0,
+            "allowCommands": 1,
+            "WanderingTraderSpawnDelay": 24000,
+            "CustomBossEvents": {},
+            "GameRules": {
+                "globalSoundEvents": "true",
+                "tntExplosionDropDecay": "false",
+                "enderPearlsVanishOnDeath": "true",
+                "doFireTick": "true",
+                "maxCommandChainLength": "65536",
+                "doVinesSpread": "true",
+                "disableElytraMovementCheck": "false",
+                "lavaSourceConversion": "false",
+                "commandBlockOutput": "true",
+                "forgiveDeadPlayers": "true",
+                "playersNetherPortalCreativeDelay": "0",
+                "doMobSpawning": "true",
+                "maxEntityCramming": "24",
+                "universalAnger": "false",
+                "playersSleepingPercentage": "100",
+                "snowAccumulationHeight": "1",
+                "blockExplosionDropDecay": "true",
+                "doImmediateRespawn": "false",
+                "naturalRegeneration": "true",
+                "doMobLoot": "true",
+                "fallDamage": "true",
+                "doEntityDrops": "true",
+                "randomTickSpeed": "3",
+                "playersNetherPortalDefaultDelay": "80",
+                "spawnRadius": "10",
+                "freezeDamage": "true",
+                "sendCommandFeedback": "true",
+                "doWardenSpawning": "true",
+                "fireDamage": "true",
+                "reducedDebugInfo": "false",
+                "waterSourceConversion": "true",
+                "projectilesCanBreakBlocks": "true",
+                "announceAdvancements": "true",
+                "drowningDamage": "true",
+                "spawnChunkRadius": "2",
+                "disableRaids": "false",
+                "doWeatherCycle": "true",
+                "mobExplosionDropDecay": "true",
+                "doDaylightCycle": "true",
+                "showDeathMessages": "true",
+                "doTileDrops": "true",
+                "doInsomnia": "true",
+                "keepInventory": "false",
+                "disablePlayerMovementCheck": "false",
+                "doLimitedCrafting": "false",
+                "mobGriefing": "true",
+                "commandModificationBlockLimit": "32768",
+                "doTraderSpawning": "true",
+                "logAdminCommands": "true",
+                "spectatorsGenerateChunks": "true",
+                "doPatrolSpawning": "true",
+                "maxCommandForkCount": "65536"
+            },
+            "Player": {
+                "Brain": {
+                    "memories": {}
+                },
+                "HurtByTimestamp": 0,
+                "SleepTimer": 0,
+                "Invulnerable": 0,
+                "FallFlying": 0,
+                "PortalCooldown": 0,
+                "AbsorptionAmount": 0,
+                "abilities": {
+                    "invulnerable": 1,
+                    "mayfly": 1,
+                    "instabuild": 1,
+                    "walkSpeed": 0.10000000149011612,
+                    "mayBuild": 1,
+                    "flying": 0,
+                    "flySpeed": 0.05000000074505806
+                },
+                "FallDistance": 0,
+                "recipeBook": {
+                    "recipes": [
+                        "minecraft:crafting_table"
+                    ],
+                    "isBlastingFurnaceFilteringCraftable": 0,
+                    "isSmokerGuiOpen": 0,
+                    "isFilteringCraftable": 0,
+                    "toBeDisplayed": [
+                        "minecraft:crafting_table"
+                    ],
+                    "isFurnaceGuiOpen": 0,
+                    "isGuiOpen": 0,
+                    "isFurnaceFilteringCraftable": 0,
+                    "isBlastingFurnaceGuiOpen": 0,
+                    "isSmokerFilteringCraftable": 0
+                },
+                "DeathTime": 0,
+                "XpSeed": 0,
+                "XpTotal": 0,
+                "UUID": [
+                    1150170037,
+                    -1915732622,
+                    -1979876906,
+                    172281849
+                ],
+                "playerGameType": 1,
+                "seenCredits": 0,
+                "Motion": [
+                    0,
+                    -0.0784000015258789,
+                    0
+                ],
+                "Health": 20,
+                "foodSaturationLevel": 5,
+                "ignore_fall_damage_from_current_explosion": 0,
+                "Air": 300,
+                "OnGround": 1,
+                "Dimension": "minecraft:overworld",
+                "Rotation": [
+                    6.449652194976807,
+                    13.049948692321777
+                ],
+                "XpLevel": 0,
+                "current_impulse_context_reset_grace_time": 0,
+                "warden_spawn_tracker": {
+                    "warning_level": 0,
+                    "ticks_since_last_warning": 660,
+                    "cooldown_ticks": 0
+                },
+                "Score": 0,
+                "Pos": [
+                    -500.6148481144683,
+                    69,
+                    -326.61791678839006
+                ],
+                "Fire": -20,
+                "XpP": 0,
+                "EnderItems": [],
+                "attributes": [
+                    {
+                        "id": "minecraft:block_interaction_range",
+                        "base": 4.5
+                    },
+                    {
+                        "id": "minecraft:movement_speed",
+                        "base": 0.10000000149011612
+                    },
+                    {
+                        "id": "minecraft:entity_interaction_range",
+                        "base": 3
+                    }
+                ],
+                "DataVersion": 4189,
+                "foodLevel": 20,
+                "foodExhaustionLevel": 0,
+                "spawn_extra_particles_on_fall": 0,
+                "HurtTime": 0,
+                "SelectedItemSlot": 0,
+                "Inventory": [],
+                "foodTickTimer": 0
+            },
+            "SpawnY": 85,
+            "rainTime": 77842,
+            "thunderTime": 83590,
+            "SpawnZ": -128,
+            "hardcore": 0,
+            "DifficultyLocked": 0,
+            "SpawnX": -512,
+            "clearWeatherTime": 0,
+            "thundering": 0,
+            "SpawnAngle": 0,
+            "version": 19133,
+            "BorderSafeZone": 5,
+            "LastPlayed": [
+                404,
+                485588510
+            ],
+            "BorderWarningTime": 15,
+            "ScheduledEvents": [],
+            "LevelName": "New World",
+            "BorderSize": 59999968,
+            "DataVersion": 4189,
+            "DataPacks": {
+                "Disabled": [
+                    "minecart_improvements",
+                    "redstone_experiments",
+                    "trade_rebalance"
+                ],
+                "Enabled": [
+                    "vanilla"
+                ]
+            }
+        }
+    }
+}

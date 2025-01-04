@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "detect-file-type": "^0.2.8",
+    "minecraft-launcher-core": "^3.18.1",
+    "nbt-js": "^0.1.0",
+    "unzipper": "^0.12.3"
+  },
+  "name": "breeze-launcher",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "33.0.1",
+    "electron-builder": "^25.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ./main.js",
+    "loadmc": "node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "build": {
+    "productName": "Breze Launcher",
+    "win": {
+      "icon": "./assets/icon.ico"
+    }
+  }
+}

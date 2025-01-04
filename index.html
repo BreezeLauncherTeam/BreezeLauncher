@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/icon.ico" type="image/x-icon">
+    <title>Breeze Launcher - beta 1.0.0 test-build</title>
+</head>
+
+<body>
+    <div id="loading">
+        <img src="assets/logo.jpg">
+    </div>
+   
+  
+    <div class="wrapper">
+
+        <div class="side-panel">
+
+            <div class="side-panel__element" data-to-screen="play-screen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="white"
+                    fill="white">
+                    <path
+                        d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"
+                        stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="side-panel__element" data-to-screen="settings-screen">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    class="injected-svg" data-src="https://cdn.hugeicons.com/icons/list-setting-bulk-rounded.svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" role="img" color="white">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16.5 12C17.0523 12 17.5 12.4477 17.5 13V13.2699C18.0993 13.4254 18.6435 13.7174 19.095 14.1109L19.4532 13.877C19.9156 13.575 20.5353 13.7051 20.8373 14.1675C21.1393 14.6299 21.0092 15.2495 20.5468 15.5515L20.2129 15.7696C20.3449 16.1561 20.4167 16.5701 20.4167 17C20.4167 17.43 20.3449 17.844 20.2128 18.2306L20.5464 18.4485C21.0088 18.7505 21.1389 19.3701 20.8369 19.8325C20.5349 20.2949 19.9152 20.425 19.4528 20.123L19.0949 19.8892C18.6433 20.2827 18.0993 20.5746 17.5 20.7301V21C17.5 21.5523 17.0523 22 16.5 22C15.9477 22 15.5 21.5523 15.5 21V20.7301C14.9007 20.5746 14.3567 20.2827 13.9051 19.8892L13.5472 20.123C13.0848 20.425 12.4651 20.2949 12.1631 19.8325C11.8611 19.3701 11.9912 18.7505 12.4536 18.4485L12.7872 18.2306C12.6551 17.844 12.5833 17.43 12.5833 17C12.5833 16.5701 12.6551 16.1561 12.7871 15.7696L12.4532 15.5515C11.9908 15.2495 11.8607 14.6299 12.1627 14.1675C12.4647 13.7051 13.0844 13.575 13.5468 13.877L13.905 14.1109C14.3565 13.7174 14.9007 13.4254 15.5 13.2699V13C15.5 12.4477 15.9477 12 16.5 12ZM16.5 15.1429C15.8266 15.1429 15.2405 15.4777 14.8991 15.9784C14.6987 16.2722 14.5833 16.6222 14.5833 17C14.5833 17.3779 14.6988 17.7279 14.8992 18.0217C15.2406 18.5224 15.8267 18.8571 16.5 18.8571C17.1733 18.8571 17.7594 18.5224 18.1008 18.0217C18.3012 17.7279 18.4167 17.3779 18.4167 17C18.4167 16.6222 18.3013 16.2722 18.1009 15.9784C17.7595 15.4777 17.1734 15.1429 16.5 15.1429Z"
+                        fill="white"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M3 3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3C21 3.55228 20.5523 4 20 4H4C3.44772 4 3 3.55228 3 3Z"
+                        fill="white"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M3 9C3 8.44772 3.44772 8 4 8H20C20.5523 8 21 8.44772 21 9C21 9.55228 20.5523 10 20 10H4C3.44772 10 3 9.55228 3 9Z"
+                        fill="white"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M3 15C3 14.4477 3.44772 14 4 14H9C9.55228 14 10 14.4477 10 15C10 15.5523 9.55228 16 9 16H4C3.44772 16 3 15.5523 3 15Z"
+                        fill="white"></path>
+                </svg>
+            </div>
+            <div class="side-panel__element" data-to-screen="saves-screen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="white" fill="none">
+                    <path d="M4 17.9808V9.70753C4 6.07416 4 4.25748 5.17157 3.12874C6.34315 2 8.22876 2 12 2C15.7712 2 17.6569 2 18.8284 3.12874C20 4.25748 20 6.07416 20 9.70753V17.9808C20 20.2867 20 21.4396 19.2272 21.8523C17.7305 22.6514 14.9232 19.9852 13.59 19.1824C12.8168 18.7168 12.4302 18.484 12 18.484C11.5698 18.484 11.1832 18.7168 10.41 19.1824C9.0768 19.9852 6.26947 22.6514 4.77285 21.8523C4 21.4396 4 20.2867 4 17.9808Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+
+        <div id="is-online" class="lang" data-lang="is_offline_title"></div>
+
+        <div class="bottom-panel">
+            <div id="splash"></div>
+            <div id="version">beta 1.0.0 test-build</div>
+        </div>
+
+        <div class="progress launch-progress">
+            <div class="progress__text launch-progress__text">
+                <div class="progress__label launch-progress__label lang" data-lang="launch_progress_label"></div>
+                <div class="progress__target launch-progress__target"></div>
+            </div>
+            <div class="progress__bar launch-progress__bar">
+                <div></div>
+            </div>
+        </div>
+
+        <div class="view-photo">
+            <div class="view-photo__window"></div>
+        </div>
+
+        <div class="notification">
+            <div class="notification__title">Успешный импорт</div>
+            <div class="notification__description"></div>
+        </div>
+
+        <div class="screens">
+
+            <div class="screen play-screen">
+                <div class="play-screen__inner">
+                    <div class="play-screen__window">
+                        <div class="play-screen__selects">
+
+
+                            <div class="play-screen__name-input-label label lang" data-lang="play_screen_name_input_label"></div>
+                            <input class="play-screen__name-input" type="text" placeholder="Your name">
+
+                            <div class="play-screen__version-select-label label lang" data-lang="play_screen_version_select_label"></div>
+                            <div class="select play-screen__version-select">
+                                <div class="select__current-value play-screen__version-select-current-value">
+                                    <div class="select__current-value-text play-screen__version-select-current-value-text"></div>
+                                        <div class="select__arrow play-screen__version-select-arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                                height="24" color="white" fill="none">
+                                                <path d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18"
+                                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                </div>
+                                <div class="select__values-body play-screen__version-select-values-body"></div>
+                            </div>
+                        </div>
+
+                        <div id="play-button" class="lang" data-lang="play_button"></div>
+                        <div id="leave-button" class="lang" data-lang="leave_button"></div>
+                    </div>
+
+                    <!--
+
+                    <div class="play-screen__version-select-wrapper">
+                        <div class="select play-screen__version-select">
+                            <div class="select__current-value play-screen__version-select-current-value">
+                                <div
+                                    class="select__current-value-version play-screen__version-select-current-value-version">
+                                </div>
+                                <div class="select__current-value-type play-screen__version-select-current-value-type">
+                                </div>
+                            </div>
+                            <div class="select__values-body play-screen__version-select-values-body">
+
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!--
+
+                    <div class="play-screen__banner--wrapper">
+                        <div class="play-screen__banner">
+                            <h1 class="play-screen__update-name">Обновление - "Коварные испытания"</h1>
+                            <p class="play-screen__update-description">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Рот рукопись города она выйти речью большой взгляд путь ведущими пустился? Предупредила коварных, сих путь вершину злых страна свой даль?</p>
+                        </div>
+                        <div class="play-screen__banner-gradient">
+                            <div id="play-button">
+                                <div id="play-button__top-line"></div>
+                                <div id="play-button__button">
+                                    <div id="play-button__left-line"></div>
+                                    <span id="play-button__text" class="lang" data-lang="play_button">play_button</span>
+                                    <div id="play-button__right-line"></div>
+                                </div>
+                                <div id="play-button__bottom-line"></div>
+                            </div>
+                        </div>
+                    </div>  -->
+
+
+                    <!--<div class="play-screen__about">
+                        <div class="play-screen__about-inner">
+                            <div class="play-screen__about-image"></div>
+                            <div class="play-screen__about-content">
+                                <div class="play-screen__about-header lang" data-lang="play_screen_about_header"></div>
+                                <div class="play-screen__about-text">
+                                    <p class="lang" data-lang="play_screen_about_text">
+
+                                    </p>
+                                    <div class="play-screen__about-links">
+                                        <a href="google.com" class="play-screen__about-link play-screen__about-link--red">
+                                            
+                                        </a>
+                                        <a href="telegram.org" class="play-screen__about-link play-screen__about-link--violet">
+                                           
+                                        </a>
+                                        <a href="github.com" class="play-screen__about-link play-screen__about-link--yellow"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+
+
+                    <!--<div class="play-screen__background"></div>-->
+                    <!--<div class="play-screen__controls">
+    
+                       <div id="play-button">
+                            <div id="play-button__top-line"></div>
+                            <div id="play-button__button">
+                                <div id="play-button__left-line"></div>
+                                <span id="play-button__text" class="lang" data-lang="play_button">play_button</span>
+                                <div id="play-button__right-line"></div>
+                            </div>
+                            <div id="play-button__bottom-line"></div>
+                        </div> 
+    
+                       
+    
+                    </div>-->
+                </div>
+            </div>
+            <div class="screen settings-screen">
+                <div class="settings-screen__inner">
+                    <div class="settings-screen__window">
+
+                        <div class="setting">
+                            <div class="setting__data">
+                                <div class="setting__title lang" data-lang="settings_language"></div>
+                                <div class="setting__description lang" data-lang="settings_language_description"></div>
+                            </div>
+                            <div class="select settings-screen__language-select">
+                                <div class="select__current-value settings-screen__language-select-current-value">
+                                    <div class="select__current-value-text settings-screen__language-select-current-value-text"></div>
+                                    <div class="select__arrow settings-screen__language-select-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                            height="24" color="white" fill="none">
+                                            <path d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18"
+                                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="select__values-body settings-screen__language-select-values-body"></div>
+                            </div>
+                        </div>
+
+                        <div class="setting">
+                            <div class="setting__data">
+                                <div class="setting__title lang" data-lang="settings_ram"></div>
+                                <div class="setting__description lang" data-lang="settings_ram_description"></div>
+                            </div>
+                            <div class="select settings-screen__ram-select">
+                                <div class="select__current-value settings-screen__ram-select-current-value">
+                                    <div class="select__current-value-text settings-screen__ram-select-current-value-text"></div>
+                                    <div class="select__arrow settings-screen__ram-select-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                            height="24" color="white" fill="none">
+                                            <path d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18"
+                                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="select__values-body settings-screen__ram-select-values-body"></div>
+                            </div>
+                        </div>
+
+                        <div class="setting">
+                            <div class="setting__data">
+                                <div class="setting__title lang" data-lang="settings_minecraft_path"></div>
+                                <div class="setting__description lang" data-lang="settings_minecraft_path_description"></div>
+                            </div>
+                            <div class="setting__control">
+                                <input type="text" class="settings-screen__minecraft-path-input">
+                                <button type="button" class="settings-screen__minecraft-path-button button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="white" fill="white">
+                                        <path d="M15.2141 5.98239L16.6158 4.58063C17.39 3.80646 18.6452 3.80646 19.4194 4.58063C20.1935 5.3548 20.1935 6.60998 19.4194 7.38415L18.0176 8.78591M15.2141 5.98239L6.98023 14.2163C5.93493 15.2616 5.41226 15.7842 5.05637 16.4211C4.70047 17.058 4.3424 18.5619 4 20C5.43809 19.6576 6.94199 19.2995 7.57889 18.9436C8.21579 18.5877 8.73844 18.0651 9.78375 17.0198L18.0176 8.78591M15.2141 5.98239L18.0176 8.78591" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M11 20H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="screen saves-screen">
+                <div class="saves-screen__inner">
+                    <div class="saves-screen__window">
+                        <div class="saves-screen__levels"></div>
+                        <div class="saves-screen__buton">
+                            <div style="display: flex; justify-content: space-between;">
+                                <button disabled type="button" class="button button--disabled saves-screen__export-button">Export</button>
+                                <button type="button" class="button saves-screen__import-button">Import</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="module" src="./languages.js"></script>
+    <script type="module" src="./splashes.js"></script>
+    <script type="module" src="./ui.js"></script>
+</body>
+
+</html>

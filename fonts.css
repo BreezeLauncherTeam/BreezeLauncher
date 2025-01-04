@@ -1,0 +1,71 @@
+@font-face {
+    font-family: "Minecraft-Seven";
+    font-weight: 700;
+    font-style: normal;
+    src: local("Nunito Sans"),
+        url("assets/Minecraft-Seven.woff2") format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Minecraft-Ten";
+    font-weight: 700;
+    font-style: normal;
+    src: local("Minecraft-Ten"),
+        url("fonts/Minecraft-Ten.woff2") format('woff2');
+
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 400;
+    font-style: normal;
+    src: local("NotoSans"),
+        url("fonts/NotoSans-Regular.woff") format('woff');
+
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 500;
+    font-style: normal;
+    src: local("NotoSans"),
+        url("fonts/NotoSans-Medium.woff") format('woff');
+
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 700;
+    font-style: normal;
+    src: local("NotoSans"),
+        url("fonts/NotoSans-Bold.woff") format('woff');
+
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "SourceSansPro";
+    font-weight: 400;
+    font-style: normal;
+    src: local("SourceSansPro"),
+        url("fonts/SourceSansPro-Regular.woff2") format('woff2'),
+        url("fonts/SourceSansPro-Regular.woff") format('woff'),
+        url("fonts/SourceSansPro-Regular.eot") format('eot');
+
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-weight: 500;
+    font-style: normal;
+    src: local("Nunito"),
+        url("fonts/nunito/Nunito-Medium.eot") format('eot'),
+        url("fonts/nunito/Nunito-Medium.woff") format('woff'),
+        url("fonts/nunito/Nunito-Medium.woff2") format('woff2');
+    font-display: swap;
+}
