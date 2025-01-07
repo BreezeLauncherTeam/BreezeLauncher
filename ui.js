@@ -1,6 +1,11 @@
 
+import { lang, 
+        LANGUAGE_NAMES, 
+        getLanguage, 
+        LANGUAGES, 
+        languageValueParser
+} from "./languages.js"
 
-import { lang, LANGUAGE_NAMES, getLanguage, LANGUAGES } from "./languages.js"
 import SPLASHES from "./splashes.js";
 
 let notificationAudio = new Audio("./sounds/Notification.mp3")
@@ -15,7 +20,9 @@ function program() {
         "8G",
     ]
 
-    let currentLevel = undefined
+    let selectedLevel = {
+        folderPath: ""
+    }
 
     function getRandomNumber(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
@@ -35,9 +42,18 @@ function program() {
     function setVersions(versions) {
         const versionInputValuesContainer = document.querySelector('.play-screen__version-select-values-body')
         for (let i = 0; i < versions.length; i++) {
+            let installed = `<div></div>`
+            for (let j = 0; j < settings.installed_versions.length; j++) {
+                if (versions[i].id === settings.installed_versions[j].id) {
+                    //installed = `<div class="play-screen__version-select-installed lang" data-lang="play_screen_version_select_installed">${LANGUAGES[settings.language].play_screen_version_select_installed}</div>`
+                }
+            }
             const value = `<div class="select__value play-screen__version-select-value">
                         <span class="select__value-version play-screen__version-select-value-version">${versions[i].id}</span>
-                        <span class="select__value-type play-screen__version-select-value-type">${versions[i].type}</span>
+                            <div class="play-screen__version-select-meta">
+                                <div class="play-screen__version-select-value-type">${versions[i].type}</div>
+                                 ${installed}
+                            </div>
                         </div></div>`
             versionInputValuesContainer.insertAdjacentHTML('beforeend', value)
             const versionInputValues = document.querySelectorAll('.play-screen__version-select-value')
@@ -90,9 +106,10 @@ function program() {
                                     <path d="M12.0005 21H8.00049C5.64347 21 4.46495 21 3.73272 20.2678C3.00049 19.5355 3.00049 18.357 3.00049 16V8C3.00049 5.64298 3.00049 4.46447 3.73272 3.73223M12.0005 21C14.3575 21 15.536 21 16.2683 20.2678C16.889 19.647 16.9835 18.7056 16.9979 16.9974M12.0005 21H17.0005C18.8861 21 19.8289 21 20.4147 20.4142M21.0005 16.9974V10C21.0005 8.11438 21.0005 7.17157 20.4147 6.58579C19.8289 6 18.8861 6 17.0005 6M17.0005 13.1109V8C17.0005 5.64298 17.0005 4.46447 16.2683 3.73223C15.536 3 14.3575 3 12.0005 3H8.00049C7.5983 3 7.23042 3 6.89321 3.00364" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <div class="saves-screen__no-levels-text lang" data-lang="saves_screen_no_levels_text"></div>
+                            <div class="saves-screen__no-levels-text lang" data-lang="saves_screen_no_levels_text">No levels</div>
                         </div>`
             document.querySelector(".saves-screen__levels").insertAdjacentHTML("beforeend", noLevels)
+            switchLanguage()
         }
 
         for (let i = 0; i < levelsData.length; i++) {
@@ -145,10 +162,13 @@ function program() {
                 e.stopImmediatePropagation()
                 for (let j = 0; j < levels.length; j++) {
                     levels[j].style.backgroundColor = "transparent"
+                    levels[j].classList.remove("saves-screen__level--active")
                 }
                 levels[i].style.backgroundColor = "#6242a442"
+                levels[i].classList.add("saves-screen__level--active")
                 document.querySelector(".saves-screen__export-button").classList.remove("button--disabled")
                 document.querySelector(".saves-screen__export-button").disabled = false
+                selectedLevel.folderPath = levelsData[i].folderPath
             })
         }
     }
@@ -184,6 +204,25 @@ function program() {
         loadLevels(levelsData)
     })
 
+    window.api.sendPath((e, data) => {
+        if (data.for == "sendPathToMinecraft") {
+            if (data.path[data.path.length - 1] == "\\") {
+                document.querySelector(".settings-screen__minecraft-path-input").value = data.path + "minecraft"
+                settings.minecraft_path = data.path + "minecraft"
+            } else {
+                document.querySelector(".settings-screen__minecraft-path-input").value = data.path + "\\minecraft"
+                settings.minecraft_path = data.path + "\\minecraft"
+            }
+            window.api.settingsToCore('settingsToCore', settings)
+            window.api.loadLevels('loadLevels', null)
+        } 
+        if (data.for == "sendPathToExport") {
+            document.querySelector(".settings-screen__export-path-input").value = data.path
+            settings.export_path = data.path
+            window.api.settingsToCore('settingsToCore', settings)
+        }   
+    })
+
     window.addEventListener('offline', () => {
         document.querySelector("#is-online").style.backgroundColor = "#ff00005e"
         document.querySelector('#is-online').textContent = LANGUAGES[settings.language].is_offline_title
@@ -209,6 +248,7 @@ function program() {
 
     document.querySelector("#splash").textContent = SPLASHES[getRandomNumber(0, SPLASHES.length - 1)]
     document.querySelector(".settings-screen__minecraft-path-input").value = settings.minecraft_path
+    document.querySelector(".settings-screen__export-path-input").value = settings.export_path
     document.querySelector(".settings-screen__language-select-current-value-text").textContent = getLanguage(settings.language)
     document.querySelector(".settings-screen__ram-select-current-value-text").textContent = settings.max_memory
 
@@ -260,6 +300,7 @@ function program() {
         let savesScreenLevels = document.querySelectorAll(".saves-screen__level")
         for (let i = 0; i < savesScreenLevels.length; i++) {
             savesScreenLevels[i].style.backgroundColor = "transparent"
+            savesScreenLevels[i].classList.remove("saves-screen__level--active")
         }
 
         document.querySelector(".saves-screen__export-button").classList.add("button--disabled")
@@ -345,17 +386,17 @@ function program() {
 
 
     document.querySelector(".settings-screen__minecraft-path-button").addEventListener("click", () => {
-        window.api.openPathDialog('openPathDialog', null)
-        window.api.sendPathToMinecraft((e, path) => {
-            if (path[path.length - 1] == "\\") {
-                document.querySelector(".settings-screen__minecraft-path-input").value = path + "minecraft"
-                settings.minecraft_path = path + "minecraft"
-            } else {
-                document.querySelector(".settings-screen__minecraft-path-input").value = path + "\\minecraft"
-                settings.minecraft_path = path + "\\minecraft"
-            }
-            window.api.settingsToCore('settingsToCore', settings)
-        })
+        window.api.openPathDialog('openPathDialog', "sendPathToMinecraft")
+    })
+
+    document.querySelector(".settings-screen__export-path-button").addEventListener("click", () => {
+        window.api.openPathDialog('openPathDialog', "sendPathToExport")
+    })
+
+    document.querySelector(".settings-screen__minecraft-path-input").addEventListener("change", () => {
+        document.querySelector(".settings-screen__minecraft-path-input").value = document.querySelector(".settings-screen__minecraft-path-input").value + "\\minecraft"
+        settings.minecraft_path = document.querySelector(".settings-screen__minecraft-path-input").value
+        window.api.settingsToCore('settingsToCore', settings)
     })
 
     const launchProgress = document.querySelector(".launch-progress")
@@ -418,10 +459,30 @@ function program() {
                     LANGUAGES[settings.language].notification_success_import_description,
                     notificationAudio
                 )
+            } else if (data.errorCode === "NOT-VALID-FILE-EXTENSION") {
+                showNotification(
+                    LANGUAGES[settings.language].notification_not_valid_extension_title,
+                    LANGUAGES[settings.language].notification_not_valid_extension_description,
+                    notificationAudio
+                )
             }
         })
     })
 
+    
+
+    document.querySelector(".saves-screen__export-button").addEventListener("click", () => {
+        window.api.exportLevel('exportLevel', selectedLevel.folderPath)
+        window.api.exportLevelEvent((e, data) => {
+            if (data.isSuccess) {
+                showNotification(
+                    LANGUAGES[settings.language].notification_success_export_title,
+                    languageValueParser(["LpathL"], [settings.export_path], LANGUAGES[settings.language].notification_success_export_description),
+                    notificationAudio
+                )
+            }
+        })
+    })
     switchLanguage()
 
 }

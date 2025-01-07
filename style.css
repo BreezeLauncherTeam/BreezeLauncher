@@ -9,7 +9,7 @@
 }
 
 html {
-    background: url(assets/bg.jpg) center center no-repeat;
+    background: url(assets/bg.png) center center no-repeat;
     background-size: cover;
     color: white;
     user-select: none;
@@ -329,7 +329,7 @@ input {
 #play-button {
     width: 100%;
     background: rgb(117,77,201);
-    background: linear-gradient(90deg, rgba(117,77,201,1) 5%, rgba(103,46,237,1) 65%, rgba(107,50,243,1) 100%);
+    /*background: linear-gradient(90deg, rgba(117,77,201,1) 5%, rgba(103,46,237,1) 65%, rgba(107,50,243,1) 100%);*/
     height: 40px;
     overflow: visible;
     display: flex;
@@ -692,6 +692,19 @@ input {
     margin-bottom: 45px;
 }
 
+.play-screen__version-select-meta {
+    display: flex;
+    align-items: center;
+}
+
+.play-screen__version-select-installed {
+    margin-right: 15px;
+}
+
+.play-screen__version-select-value-type {
+    margin-right: 15px;
+}
+
 .play-screen__version-select--active .play-screen__version-select-values-body {
     display: block;
 }
@@ -902,6 +915,7 @@ input {
     justify-content: space-between;
 }
 
+.settings-screen__export-path-button,
 .settings-screen__minecraft-path-button {
     margin-left: 10px;
 }
@@ -944,14 +958,33 @@ input {
     position: relative;
     margin-bottom: 20px;
     background-color: #1915316d;
-    padding: 20px 0px 20px 0px;
+    padding: 13px 0px 20px 0px;
 }
 
+.saves-screen__search-level {
+    padding: 0px 15px 0px 15px;
+    margin-bottom: 15px;
+}
+
+.saves-screen__search-level-title {
+    font-family: 'NotoSans';
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.saves-screen__search-level-description {
+    font-family: "Nunito";
+    color: #ffffffcc;
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 135%;
+}
 
 .saves-screen__levels {
     max-height: 300px;
     overflow-y: scroll;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .saves-screen__no-levels {
@@ -973,10 +1006,10 @@ input {
     height: fit-content;
     display: flex;
     position: relative;
-    padding: 7px 20px 7px 20px;
+    padding: 5px 20px 5px 20px;
 }
 
-.saves-screen__level:hover {
+.saves-screen__level:hover:not(.saves-screen__level--active) {
     background-color: #b4b3cc12 !important;
 }
 

@@ -6,11 +6,14 @@ const nbt = require('nbt-js')
 const fs = require("fs")
 const detect = require('detect-file-type')
 const unzipper = require("unzipper")
+const archiver = require('archiver');
 const { Client, Authenticator } = require('minecraft-launcher-core');
 const launcher = new Client();
 const { dialog } = require('electron')
 const { exec } = require('child_process');
 const { loadEnvFile } = require('process');
+const { json } = require('stream/consumers');
+const { type } = require('os');
 const LAUNCHER_PATH = "D:/breeze-launcher/"
 const LAUNCHER_SETTINGS_PATH = "D:/breeze-launcher/settings.json"
 
@@ -22,7 +25,8 @@ const DEFAULT_SETTINGS = {
     language: "en_US",
     minecraft_version: "1.21",
     minecraft_version_type: "release",
-    minecraft_path: "D:/minecraft",
+    minecraft_path: "D:\\minecraft",
+    export_path: "D:\\",
     installed_versions: []
 }
 
@@ -48,6 +52,46 @@ function setSettings() {
         console.error('Write file error:', err);
     }
 }
+
+function loadVersionsIds(startPath) {
+    if (!fs.existsSync(startPath)) {
+        console.log(`[ERROR]: Path ${startPath} not found`);
+        return false
+    }
+
+    let versionsIds = []
+    const files = fs.readdirSync(startPath);
+    let types = []
+
+    for (let i = 0; i < files.length; i++) {
+        const filePath = path.join(startPath, files[i]);
+        const stat = fs.lstatSync(filePath);
+        
+        if (stat.isDirectory()) {
+
+            const necessaryFiles = fs.readdirSync(filePath)
+            let exts = []
+            let names = []
+            for (let j = 0; j < necessaryFiles.length; j++) {
+                exts = [...exts, path.parse(necessaryFiles[j]).ext]
+                names = [...names, path.parse(necessaryFiles[j]).name]
+            }
+            try {
+                types = [...types,  JSON.parse(fs.readFileSync(path.join(filePath, "\\" + necessaryFiles[1]))).type]
+            } catch(e) {
+                console.log("[ERROR]: ", e.message)
+            }
+            if (exts.includes(".jar") && exts.includes(".json") && names[0] == names[1]) {
+                versionsIds = [...versionsIds, {id: names[0]}]
+            }
+        }
+    }
+    for (let i = 0; i < types.length; i++) {
+        versionsIds[i].type = types[i]         
+    }
+    return versionsIds
+}
+
 
 
 function loadLevelsData(startPath, fileName) {
@@ -78,7 +122,7 @@ function loadLevelsData(startPath, fileName) {
 }
 
 function loadLevels() {
-    let files = loadLevelsData(settings.minecraft_path + "/saves", 'level.dat')
+    let files = loadLevelsData(settings.minecraft_path + "\\saves", 'level.dat')
     let levelsData = []
     for (let i = 0; i < files.length; i++) {
 
@@ -108,11 +152,38 @@ function createLevelFolderName(firstName) {
     }
 }
 
+function createFileName(dir, firstName, ext) {
+    if (fs.existsSync(dir + firstName + "." + ext)) {
+        return createFileName(dir, firstName + "1", ext) 
+    } else {
+        return firstName
+    }
+}
+
+function isValidSettings(settings, defaultSett) {
+    let settingsKeys = []
+    let defaultKeys = []
+
+    for (let key in settings) {
+        settingsKeys = [...settingsKeys, key]
+    }
+
+    for (let key in defaultSett) {
+        defaultKeys = [...defaultKeys, key]
+    }
+
+    console.log(defaultKeys, settingsKeys)
+
+    if (JSON.stringify(settingsKeys) === JSON.stringify(defaultKeys)) {
+        return true
+    }
+}
+
 (async () => {
     if (!fs.existsSync(LAUNCHER_PATH));
     await fs.mkdir(LAUNCHER_PATH, () => { })
 
-    if (getSettings()) {
+    if (getSettings() && isValidSettings(getSettings(), DEFAULT_SETTINGS)) {
         settings = getSettings()
     } else {
         settings = DEFAULT_SETTINGS
@@ -141,6 +212,8 @@ const createWindow = () => {
     webContents = win.webContents
 
     win.loadURL(`file://${__dirname}/index.html`).then(() => {
+        settings.installed_versions = loadVersionsIds(settings.minecraft_path + "\\versions")
+        setSettings()
         win.webContents.send('settingsToUi', settings)
         loadLevels()
 
@@ -162,23 +235,50 @@ exec("java -verson", (err, stdout, stderr) => {
     console.log(stderr, stdout)
 })
 
+ipcMain.handle('loadLevels', (e, data) => {
+    loadLevels()
+})
 
 ipcMain.handle('settingsToCore', (e, sett) => {
     settings = sett
     setSettings()
 })
 
-ipcMain.handle('openPathDialog', (e, data) => {
+ipcMain.handle('openPathDialog', (e, openFor) => {
     let options = {
         properties: ["openDirectory"]
     }
     dialog.showOpenDialog(options).then((data) => {
-        webContents.send("sendPathToMinecraft", data.filePaths[0])
+        webContents.send("sendPath", {
+            path: data.filePaths[0],
+            for: openFor,
+        })
     })
 })
 
 ipcMain.handle("leave", (e) => {
     app.quit()
+})
+
+ipcMain.handle("exportLevel", (e, data) => {
+
+    let splitName = data.split("\\")
+    let sourceDir = data
+    
+    const archive = archiver('zip', { zlib: { level: 9 } }); 
+    const stream = fs.createWriteStream(settings.export_path + createFileName(settings.export_path, splitName[splitName.length - 1], "zip") + ".zip");
+
+    let p = new Promise((resolve, reject) => { 
+        archive.directory(sourceDir, false).on('error', err => reject(err)) .pipe(stream);
+        stream.on('close', () => resolve()); 
+        archive.finalize(); 
+    });
+
+    p.then(() => {
+        webContents.send("exportLevelEvent", {
+            isSuccess: true,
+        })
+    })
 })
 
 ipcMain.handle("importLevel", (e) => {
@@ -190,8 +290,9 @@ ipcMain.handle("importLevel", (e) => {
 
         let validExternitions = ["zip"]
 
+
         detect.fromFile(files.filePaths[0], function (err, res) {
-            if (validExternitions.includes(res.ext)) {
+            if (validExternitions.includes((res ?? {ext: ""}).ext)) {
 
                
                 let splitName = files.filePaths[0].split("\\")
@@ -204,6 +305,7 @@ ipcMain.handle("importLevel", (e) => {
                         webContents.send("importLevelEvent", {
                             isMinecraftWorld: true,
                             isSuccess: true,
+                            errorCode: 0,
                         })
                     })
 
@@ -211,6 +313,7 @@ ipcMain.handle("importLevel", (e) => {
                 webContents.send("importLevelEvent", {
                     isMinecraftWorld: false,
                     isSuccess: false,
+                    errorCode: "NOT-VALID-FILE-EXTENSION",
                 })
             }
         })

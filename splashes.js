@@ -10,7 +10,7 @@ const SPLASHES = [
     "Uses JavaScript 17",
     "I work all night I work all day",
     "Try to love one another right now",
-    "Somebody's actually using switch/case?"
+    "Somebody's actually using switch/case?",
 ]
 
 export default SPLASHES
